@@ -108,8 +108,12 @@ class Client(object):
         if datatype == "s":
             return value
         else:
-            #return pickle.loads(base64.b64decode(value))
-            return pickle.loads(value)
+            if len(value)%3==1:
+                value+='=='
+            elif len(value)%3==2:
+                value+='='
+            return pickle.loads(base64.b64decode(value))
+            #return pickle.loads(value)
 
     def set(self, name, value, timedelta=None, domain="default"):
         #name = name.replace("\n", "").replace("\t", "")
@@ -119,8 +123,8 @@ class Client(object):
             dump = value
         else:
             name = "x" + name
-            #dump = base64.b64encode(pickle.dumps(value)).decode()
-            dump = pickle.dumps(value)
+            dump = base64.b64encode(pickle.dumps(value)).decode()
+            #dump = pickle.dumps(value)
 
         self.Open()
         # dump = base64.b64encode(pickle.dumps(value)).decode()
