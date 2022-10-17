@@ -122,7 +122,7 @@ class Client(object):
             name = "x" + name
             dump = base64.b64encode(pickle.dumps(value)).decode()
             #dump = pickle.dumps(value)
-            print('dump len=', len(dump), 'type=', type(value))
+            print('dump len=', len(dump), 'type=', type(value), 'value len=', len(value))
 
         self.Open()
         # dump = base64.b64encode(pickle.dumps(value)).decode()
