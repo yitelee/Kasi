@@ -91,7 +91,7 @@ def start_server(host=None, port=5000, connections=5, domain="default"):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # get the instance
     server_socket.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 1024)
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 65535)
 
     try:
         server_socket.bind((host, port))  # bind host address and port together
