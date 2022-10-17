@@ -78,7 +78,7 @@ def start_server_daemon(host=None, port=5000, connections=5, domain="default"):
     print('eeeeae')
 
 
-def start_server(host=None, port=5000, connections=5, domain="default"):
+def start_server(host=None, port=5000, connections=5, domain="default", perf=False):
     global _performance_mode
     global _stats_get_hit
     global _stats_set_hit
@@ -88,6 +88,8 @@ def start_server(host=None, port=5000, connections=5, domain="default"):
     if not host:
         host = 'localhost'
 
+    _performance_mode = perf
+    
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # get the instance
     server_socket.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
