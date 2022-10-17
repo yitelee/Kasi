@@ -149,7 +149,7 @@ def start_server(host=None, port=5000, connections=5, domain="default"):
                 value = lines[3]
                 res = storage.set(name, value, datatype, exp, domain)
                 if not _performance_mode:
-                    log("INFO", "SET [{domain}].[{key}] type={datatype} value={value}".format(key=name, domain=domain, datatype=datatype, value=str(value)), noeof=True)
+                    log("INFO", "SET [{domain}].[{key}] type={datatype} value={value} len={vlen} ".format(key=name, domain=domain, datatype=datatype, value=str(value), vlen=len(value)), noeof=True)
                 if res == "0":
                     if not _performance_mode:
                         logend("OK")
